@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .bg {
+        width: 100%;
+        height: 100vh;
+        background-image: url(https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(20px);
+        padding: 1px;
+      }
+      .load {
+        position: absolute;
+        top: 400px;
+        left: 700px;
+        font-size: 20px;
+        text-align: center;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <p class="load">0%</p>
+
+    <script>
+      var bg = document.getElementsByClassName("bg")[0];
+      var load = document.getElementsByTagName("p")[0];
+      console.log(bg, load);
+
+      var loading = 0;
+
+      var int = setInterval(function () {
+        loading = loading + 1;
+        load.innerHTML = loading + "%";
+        if (loading == 0) {
+          bg.style.filter = "blur(30px)";
+        }
+
+        if (loading == 10) {
+          bg.style.filter = "blur(6px)";
+        } else if (loading == 20) {
+          bg.style.filter = "blur(5px)";
+        } else if (loading == 30) {
+          bg.style.filter = "blur(4px)";
+        } else if (loading == 50) {
+          bg.style.filter = "blur(3px)";
+        } else if (loading == 70) {
+          bg.style.filter = "blur(2px)";
+        } else if (loading == 90) {
+          bg.style.filter = "blur(0px)";
+        } else if (loading == 100) {
+          clearInterval(int);
+          load.style.display = "none";
+        }
+      }, 30);
+    </script>
+  </body>
+</html>
